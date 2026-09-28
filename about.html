@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Mel The Master Barber | Craftsmanship, Trust & Consistency in Smyrna, GA</title>
+  <meta name="description" content="Learn about Mel The Master Barber at Mel the Master Barber in Smyrna, GA. Dedicated to precision haircuts, custom beard sculpting, and tailored client consultations.">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS Design System & Responsive Rules -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       PREMIUM FLOATING NAVBAR (EXACT HOME PAGE MARKUP)
+       ========================================== -->
+  <div class="navbar-floating-wrapper" id="navbarWrapper">
+    <div class="navbar-floating-container">
+      
+      <!-- 1. LOGO (LEFT) -->
+      <a class="navbar-brand navbar-brand-custom" href="index.html">
+        <img src="images/navbar/logo.jpeg" alt="Mel The Master Barber Logo" class="brand-logo-img">
+      </a>
+
+      <!-- 2. DESKTOP NAV LINKS (CENTER - EXACT 1-LINE 14.5px) -->
+      <ul class="desktop-nav-links d-none d-lg-flex">
+        <li><a class="nav-link-custom" href="index.html">Home</a></li>
+        <li><a class="nav-link-custom active" href="about.html">About</a></li>
+        <li><a class="nav-link-custom" href="services.html">Services</a></li>
+        <li><a class="nav-link-custom" href="gallery.html">Gallery</a></li>
+        <li><a class="nav-link-custom" href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- 3. CTA BUTTON & THEME TOGGLE (RIGHT) -->
+      <div class="desktop-nav-actions d-none d-lg-flex">
+        <button class="theme-toggle-btn" id="themeToggleBtnDesktop" aria-label="Toggle dark/light theme">
+          <span class="themeIcon">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12.3 2c.43 0 .77.35.7.78-.47 2.87.41 5.84 2.45 7.88 2.04 2.04 5.01 2.92 7.88 2.45.43-.07.78.27.78.7 0 5.52-4.48 10-10 10S2 19.32 2 13.8 6.78 2 12.3 2z"/></svg>
+          </span>
+        </button>
+        <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary" style="padding: 0.6rem 1.35rem; font-size: 0.78rem;">Book Appointment</a>
+      </div>
+
+      <!-- MOBILE CONTROLS (MOBILE: [LOGO] [THEME TOGGLE] [HAMBURGER MENU]) -->
+      <div class="mobile-nav-controls d-flex align-items-center gap-2 d-lg-none">
+        <button class="theme-toggle-btn" id="themeToggleBtnMobile" aria-label="Toggle dark/light theme">
+          <span class="themeIcon">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12.3 2c.43 0 .77.35.7.78-.47 2.87.41 5.84 2.45 7.88 2.04 2.04 5.01 2.92 7.88 2.45.43-.07.78.27.78.7 0 5.52-4.48 10-10 10S2 19.32 2 13.8 6.78 2 12.3 2z"/></svg>
+          </span>
+        </button>
+        <!-- PREMIUM HAMBURGER -->
+        <button class="mob-hamburger" type="button" id="mobileNavToggler" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="mob-ham-bar"></span>
+          <span class="mob-ham-bar"></span>
+          <span class="mob-ham-bar"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MOBILE FULL-SCREEN EDITORIAL MENU -->
+  <div class="mob-menu-overlay d-lg-none" id="navbarCollapse" aria-hidden="true">
+    <!-- Decorative editorial watermark -->
+    <div class="mob-menu-watermark" aria-hidden="true">MEL</div>
+
+    <!-- Close button -->
+    <button class="mob-menu-close" id="mobileNavClose" aria-label="Close navigation">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Navigation List -->
+    <nav class="mob-menu-nav" aria-label="Mobile navigation">
+      <ul class="mob-nav-list">
+        <li class="mob-nav-item" style="--i:0">
+          <a class="mob-nav-link" href="index.html">
+            <span class="mob-nav-num">01</span>
+            <span class="mob-nav-label">Home</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:1">
+          <a class="mob-nav-link active" href="about.html">
+            <span class="mob-nav-num">02</span>
+            <span class="mob-nav-label">About</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:2">
+          <a class="mob-nav-link" href="services.html">
+            <span class="mob-nav-num">03</span>
+            <span class="mob-nav-label">Services</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:3">
+          <a class="mob-nav-link" href="gallery.html">
+            <span class="mob-nav-num">04</span>
+            <span class="mob-nav-label">Gallery</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:4">
+          <a class="mob-nav-link" href="index.html#reviews">
+            <span class="mob-nav-num">05</span>
+            <span class="mob-nav-label">Reviews</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:5">
+          <a class="mob-nav-link" href="index.html#faq">
+            <span class="mob-nav-num">06</span>
+            <span class="mob-nav-label">FAQ</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:6">
+          <a class="mob-nav-link" href="contact.html">
+            <span class="mob-nav-num">07</span>
+            <span class="mob-nav-label">Contact</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Premium booking CTA -->
+    <div class="mob-menu-cta">
+      <p class="mob-cta-label">READY FOR YOUR NEXT LOOK?</p>
+      <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="mob-cta-btn">BOOK APPOINTMENT</a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SECTION 1: CINEMATIC ABOUT HERO
+       ========================================== -->
+  <section class="hero-slider-section position-relative" style="height: 75vh; min-height: 520px;">
+    <div class="hero-slide active">
+      <div class="hero-slide-bg" style="background-image: url('images/about/about1.jpeg'); background-position: center 30%;"></div>
+      <div class="hero-overlay" style="background: linear-gradient(180deg, rgba(10, 10, 10, 0.75) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.95) 100%);"></div>
+      <div class="container hero-content-wrapper">
+        <div class="hero-text-box">
+          <span class="eyebrow">THE MASTER BARBER STORY</span>
+          <h1 class="hero-headline display-4">Craftsmanship, Trust &amp; Consistency</h1>
+          <p class="hero-description">
+            Dedicated to precision barbering, active consultation, and tailored grooming craftsmanship inside Mel the Master Barber, Smyrna, GA.
+          </p>
+          <div class="hero-cta-group justify-content-center">
+            <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary">Book Appointment</a>
+            <a href="services.html" class="btn-gold-secondary">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 2: ABOUT STORY & CRAFT
+       ========================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="position-relative rounded overflow-hidden shadow-lg border border-subtle" style="height: 480px;">
+            <img src="images/about/about2.jpeg" alt="Mel The Master Barber Crafting a Haircut" class="w-100 h-100 object-fit-cover">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <span class="eyebrow">THE STORY</span>
+          <h2>More Than a Haircut. It's a Standard.</h2>
+          <div class="gold-divider"></div>
+          <p class="lead" style="color: var(--accent);">
+            Grooming is a personal partnership built on precision, mutual respect, and attention to detail.
+          </p>
+          <p>
+            Operating inside <strong>Mel the Master Barber</strong> in Smyrna, GA, Mel The Master Barber approaches every haircut with deliberate focus. From skin taper fades and custom beard sculpting to straight-razor detailing, every chair session begins with understanding what fits your natural growth pattern and personal style.
+          </p>
+          <p>
+            The goal is simple: deliver a consistent, high-end grooming experience where appointments run on schedule and you walk out feeling confident.
+          </p>
+          <div class="mt-4">
+            <a href="services.html" class="btn-gold-primary">Discover More &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: PHILOSOPHY SECTION
+       ========================================== -->
+  <section class="section-padding bg-secondary-section">
+    <div class="container">
+      <div class="text-center max-width-700 mx-auto mb-5">
+        <span class="eyebrow">THE PHILOSOPHY</span>
+        <h2>Precision Is Personal.</h2>
+        <div class="gold-divider mx-auto"></div>
+        <p>Every head of hair, face shape, and lifestyle requires a distinct, tailored grooming solution.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- CARD 01 -->
+        <div class="col-md-4">
+          <div class="p-4 p-md-5 rounded h-100 border border-subtle" style="background-color: var(--bg-card);">
+            <div class="mb-3" style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--accent);">01</div>
+            <h3 class="h4 mb-3">Consultation</h3>
+            <p class="mb-0">A deliberate discussion before picking up shears or clippers to align on your hair texture, hairline growth, and style goals.</p>
+          </div>
+        </div>
+
+        <!-- CARD 02 -->
+        <div class="col-md-4">
+          <div class="p-4 p-md-5 rounded h-100 border border-subtle" style="background-color: var(--bg-card);">
+            <div class="mb-3" style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--accent);">02</div>
+            <h3 class="h4 mb-3">Precision</h3>
+            <p class="mb-0">Uncompromising technical accuracy on skin fades, taper blends, beard shaping, and straight-razor perimeter line-ups.</p>
+          </div>
+        </div>
+
+        <!-- CARD 03 -->
+        <div class="col-md-4">
+          <div class="p-4 p-md-5 rounded h-100 border border-subtle" style="background-color: var(--bg-card);">
+            <div class="mb-3" style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--accent);">03</div>
+            <h3 class="h4 mb-3">Confidence</h3>
+            <p class="mb-0">The ultimate outcome of master barbering: leaving the lounge looking sharp, clean, and completely confident.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 4: THE CRAFT & SERVICES SPOTLIGHT
+       ========================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 order-lg-2">
+          <div class="position-relative rounded overflow-hidden shadow-lg border border-subtle" style="height: 440px;">
+            <img src="images/about/about3.jpeg" alt="Barber Craftsmanship & Razor Detail" class="w-100 h-100 object-fit-cover">
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <span class="eyebrow">THE CRAFT</span>
+          <h2>Where Detail Makes the Difference.</h2>
+          <div class="gold-divider"></div>
+          <p class="mb-4">
+            Master barbering demands mastery over classic techniques and modern hair trends. Every chair session is completed with professional products and clean equipment.
+          </p>
+
+          <div class="d-flex flex-column gap-3 mb-4">
+            <div class="d-flex align-items-start gap-3 p-3 rounded" style="background: var(--bg-card); border: 1px solid var(--border-subtle);">
+              <span style="color: var(--accent); font-weight: 700;">&#10003;</span>
+              <div>
+                <strong class="text-white">Precision Haircuts &amp; Skin Fades</strong>
+                <div class="small" style="color: var(--text-secondary);">Custom fades, tapers, and classic scissor work.</div>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3 p-3 rounded" style="background: var(--bg-card); border: 1px solid var(--border-subtle);">
+              <span style="color: var(--accent); font-weight: 700;">&#10003;</span>
+              <div>
+                <strong class="text-white">Beard Sculpting &amp; Razor Finish</strong>
+                <div class="small" style="color: var(--text-secondary);">Facial hot towel treatment and crisp straight-razor detailing.</div>
+              </div>
+            </div>
+          </div>
+
+          <a href="services.html" class="btn-gold-primary">View Full Service Menu &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: WHY CLIENTS CHOOSE MEL
+       ========================================== -->
+  <section class="section-padding bg-secondary-section">
+    <div class="container">
+      <div class="text-center max-width-700 mx-auto mb-5">
+        <span class="eyebrow">THE STANDARDS</span>
+        <h2>Why Clients Choose Mel</h2>
+        <div class="gold-divider mx-auto"></div>
+      </div>
+
+      <div class="row g-4 text-center">
+        <div class="col-md-3 col-sm-6">
+          <div class="p-4 rounded border border-subtle h-100" style="background: var(--bg-card);">
+            <div class="mb-2" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent); font-weight: 700;">01</div>
+            <h4 class="h5 mb-2">Tailored Consultation</h4>
+            <p class="small mb-0" style="color: var(--text-secondary);">Personalized hair texture and style analysis.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <div class="p-4 rounded border border-subtle h-100" style="background: var(--bg-card);">
+            <div class="mb-2" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent); font-weight: 700;">02</div>
+            <h4 class="h5 mb-2">Precision &amp; Detail</h4>
+            <p class="small mb-0" style="color: var(--text-secondary);">Sharp perimeter lines and seamless taper fades.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <div class="p-4 rounded border border-subtle h-100" style="background: var(--bg-card);">
+            <div class="mb-2" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent); font-weight: 700;">03</div>
+            <h4 class="h5 mb-2">Professional Punctuality</h4>
+            <p class="small mb-0" style="color: var(--text-secondary);">On-time calendar reservations through Booksy.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <div class="p-4 rounded border border-subtle h-100" style="background: var(--bg-card);">
+            <div class="mb-2" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent); font-weight: 700;">04</div>
+            <h4 class="h5 mb-2">Luxury Atmosphere</h4>
+            <p class="small mb-0" style="color: var(--text-secondary);">Located at Mel the Master Barber, Smyrna GA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 6: LOCATION STRIP
+       ========================================== -->
+  <section class="section-padding text-center" style="background-color: var(--bg-primary); border-top: 1px solid var(--border-subtle);">
+    <div class="container mx-auto" style="max-width: 700px;">
+      <span class="eyebrow">VISIT THE BARBERSHOP</span>
+      <h2 class="mb-3">Mel the Master Barber</h2>
+      <p class="lead mb-4" style="color: var(--text-secondary);">
+        5350 United Drive SE, Suite 105, Smyrna, GA
+      </p>
+      <a href="contact.html" class="btn-gold-secondary">Visit The Shop &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 7: FINAL BOOKING CTA
+       ========================================== -->
+  <section class="section-padding text-center" style="background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); border-top: 1px solid var(--border-gold);">
+    <div class="container">
+      <span class="eyebrow">READY FOR THE EXPERIENCE?</span>
+      <h2 class="mb-4">Your Next Look Starts Here.</h2>
+      <p class="mx-auto mb-4" style="max-width: 600px; color: var(--text-secondary);">
+        Reserve your chair time online via Booksy and experience master barbering precision.
+      </p>
+      <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary">BOOK YOUR APPOINTMENT NOW</a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 8: BRANDED FOOTER (EXACT HOME PAGE FOOTER)
+       ========================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      
+      <div class="footer-brand-statement">
+        LOOK SHARP. <span>FEEL CONFIDENT.</span>
+      </div>
+
+      <div class="row g-4 pt-3">
+        <div class="col-lg-3 col-md-6">
+          <div class="mb-3">
+            <img src="images/navbar/footer-logo.jpeg" alt="Mel The Master Barber Logo" class="footer-logo-img">
+          </div>
+          <p>Luxury master barbering services at Mel the Master Barber in Smyrna, GA. Precision cuts, beard grooming, and style craftsmanship.</p>
+          
+          <!-- OFFICIAL VERIFIED SOCIAL LINKS -->
+          
+        </div>
+        
+        <!-- QUICK LINKS WITH VIP ARROWS -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Quick Links</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2">
+            <li><a href="index.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Home</a></li>
+            <li><a href="about.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> About</a></li>
+            <li><a href="services.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Services</a></li>
+            <li><a href="gallery.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Gallery</a></li>
+            <li><a href="contact.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTACT INFORMATION COLUMN WITH ICONS -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Contact Info</h5>
+          <p class="mb-2 d-flex align-items-start gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" class="mt-1" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span><a href="https://www.google.com/maps/search/?api=1&query=Gold+Room+Grooming+Lounge+5350+United+Drive+SE+Suite+105+Smyrna+GA" target="_blank" rel="noopener" class="interactive-contact-link">5350 United Drive SE, Suite 105, Smyrna, GA</a></span>
+          </p>
+          <p class="mb-2 d-flex align-items-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span><a href="tel:7708951392" class="interactive-contact-link">(770) 895-1392</a></span>
+          </p>
+          <p class="mb-2 d-flex align-items-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span><a href="mailto:melcuts@gmail.com" class="interactive-contact-link">melcuts@gmail.com</a></span>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Business Hours</h5>
+          <p class="mb-1">Mon &ndash; Thurs: 7:00 AM &ndash; 6:00 PM</p>
+          <p class="mb-1">Fri: 8:00 AM &ndash; 6:00 PM</p>
+          <p class="mb-1">Sat: 8:00 AM &ndash; 5:00 PM</p>
+          <p class="mb-1">Sun: 12:00 PM &ndash; 4:00 PM</p>
+          
+          <!-- OFFICIAL 3 SOCIAL ICONS (FB, IG, GMAIL) DIRECTLY BELOW BUSINESS HOURS -->
+          <div class="footer-social-links d-flex align-items-center gap-2 mt-3 text-center justify-content-center">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/melthemasterbarber" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook Profile" title="Facebook">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.65 13.75 5.65c1.08 0 2.21.19 2.21.19v2.43h-1.25c-1.23 0-1.61.77-1.61 1.56V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/melthemasterbarber/" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram Profile" title="Instagram">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Gmail -->
+            <a href="mailto:info@themelmasterbarber.com" class="footer-social-icon" aria-label="Send Email via Gmail" title="Gmail">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center pt-4 mt-5 border-top border-secondary opacity-50">
+        <p class="meduim mb-0">&copy; 2026 Mel The Master Barber. All rights reserved.</p>
+        <p class="meduim mb-0">Designed and Developed by <a href="https://tamoor-dev-neon.vercel.app" target="_blank" rel="noopener noreferrer" class="fw-bold">Temii-Tech</a></p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS Controller -->
+  <script src="js/main.js"></script>
+  <!-- AI Chatbot Logic -->
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

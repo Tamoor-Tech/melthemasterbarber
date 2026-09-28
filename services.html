@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services &amp; Pricing | Mel The Master Barber Smyrna GA</title>
+  <meta name="description" content="Official master services and transparent pricing for Mel The Master Barber operating inside Mel the Master Barber, Smyrna GA. Master haircuts, beard sculpting, and combo services.">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS Design System & Responsive Rules -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="css/chatbot.css">
+
+  <!-- ============================================================
+       VIP SERVICES PAGE — PREMIUM ENHANCEMENTS
+       ============================================================ -->
+  <style>
+    /* ── VIP SERVICE CARD ─────────────────────────────────────── */
+    .vip-service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--accent);
+      border-radius: 4px;
+      padding: 2rem 1.65rem 1.75rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.38s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.38s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.38s ease;
+    }
+
+    /* subtle shimmer sweep on hover */
+    .vip-service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%; height: 100%;
+      background: linear-gradient(120deg, transparent 0%, rgba(198,161,91,0.07) 50%, transparent 100%);
+      transform: skewX(-20deg);
+      transition: left 0.55s ease;
+      pointer-events: none;
+    }
+    .vip-service-card:hover::before { left: 135%; }
+
+    .vip-service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(198,161,91,0.55);
+      border-top-color: var(--accent);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.38), 0 0 0 1px rgba(198,161,91,0.12);
+    }
+
+    /* card number badge */
+    .vip-card-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(198,161,91,0.12);
+      border: 1px solid rgba(198,161,91,0.3);
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    /* category label */
+    .vip-card-cat {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      opacity: 0.8;
+    }
+
+    /* title */
+    .vip-card-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.05rem, 1.5vw + 0.7rem, 1.28rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin: 0.55rem 0 0.5rem;
+    }
+
+    /* gold separator */
+    .vip-card-sep {
+      width: 28px; height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+      margin: 0.6rem 0 0.75rem;
+      transition: width 0.35s ease;
+    }
+    .vip-service-card:hover .vip-card-sep { width: 44px; opacity: 0.9; }
+
+    /* description */
+    .vip-card-desc {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+
+    /* price + duration row */
+    .vip-card-meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin: 1.1rem 0 1.4rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1rem;
+    }
+
+    .vip-card-price {
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .vip-card-duration {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .vip-card-duration svg { flex-shrink: 0; }
+
+    /* book button inside card */
+    .vip-card-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.72rem 1rem;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #0A0A0A !important;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      text-decoration: none;
+      transition: background 0.25s ease, transform 0.22s ease, box-shadow 0.22s ease;
+      box-shadow: 0 4px 16px rgba(198,161,91,0.25);
+    }
+    .vip-card-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(198,161,91,0.38);
+    }
+
+    /* ── FEATURED SPOTLIGHT UPGRADE ──────────────────────────── */
+    .vip-spotlight {
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-primary) 100%);
+      border: 1px solid rgba(198,161,91,0.38);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 3rem);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.28), inset 0 0 80px rgba(198,161,91,0.03);
+    }
+    .vip-spotlight::after {
+      content: '★';
+      position: absolute;
+      right: -0.5rem; top: -1.5rem;
+      font-size: 9rem;
+      color: var(--accent);
+      opacity: 0.04;
+      pointer-events: none;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    /* ── SECTION HEADER UPGRADE ─────────────────────────────── */
+    .vip-section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(198,161,91,0.10);
+      border: 1px solid rgba(198,161,91,0.25);
+      border-radius: 100px;
+      padding: 0.32rem 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+    .vip-section-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* ── STATS TICKER STRIP ─────────────────────────────────── */
+    .vip-stats-strip {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 1.75rem 0;
+    }
+    .vip-stat-item {
+      text-align: center;
+      padding: 0 1.5rem;
+      border-right: 1px solid var(--border-subtle);
+    }
+    .vip-stat-item:last-child { border-right: none; }
+    .vip-stat-num {
+      font-family: var(--font-body);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+    .vip-stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.35rem;
+    }
+
+    /* ── ENTRANCE ANIMATION ─────────────────────────────────── */
+    @keyframes vipCardIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .vip-service-card {
+      animation: vipCardIn 0.55s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .col-md-6:nth-child(1)  .vip-service-card { animation-delay: 0.05s; }
+    .col-md-6:nth-child(2)  .vip-service-card { animation-delay: 0.10s; }
+    .col-md-6:nth-child(3)  .vip-service-card { animation-delay: 0.15s; }
+    .col-md-6:nth-child(4)  .vip-service-card { animation-delay: 0.20s; }
+    .col-md-6:nth-child(5)  .vip-service-card { animation-delay: 0.25s; }
+    .col-md-6:nth-child(6)  .vip-service-card { animation-delay: 0.30s; }
+    .col-md-6:nth-child(7)  .vip-service-card { animation-delay: 0.35s; }
+    .col-md-6:nth-child(8)  .vip-service-card { animation-delay: 0.40s; }
+    .col-md-6:nth-child(9)  .vip-service-card { animation-delay: 0.45s; }
+    .col-md-6:nth-child(10) .vip-service-card { animation-delay: 0.50s; }
+    .col-md-6:nth-child(11) .vip-service-card { animation-delay: 0.55s; }
+    .col-md-6:nth-child(12) .vip-service-card { animation-delay: 0.60s; }
+    .col-md-6:nth-child(13) .vip-service-card { animation-delay: 0.65s; }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       PREMIUM FLOATING NAVBAR (EXACT HOME PAGE MARKUP)
+       ========================================== -->
+  <div class="navbar-floating-wrapper" id="navbarWrapper">
+    <div class="navbar-floating-container">
+      
+      <!-- 1. LOGO (LEFT) -->
+      <a class="navbar-brand navbar-brand-custom" href="index.html">
+        <img src="images/navbar/logo.jpeg" alt="Mel The Master Barber Logo" class="brand-logo-img">
+      </a>
+
+      <!-- 2. DESKTOP NAV LINKS (CENTER - EXACT 1-LINE 14.5px) -->
+      <ul class="desktop-nav-links d-none d-lg-flex">
+        <li><a class="nav-link-custom" href="index.html">Home</a></li>
+        <li><a class="nav-link-custom" href="about.html">About</a></li>
+        <li><a class="nav-link-custom active" href="services.html">Services</a></li>
+        <li><a class="nav-link-custom" href="gallery.html">Gallery</a></li>
+        <li><a class="nav-link-custom" href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- 3. CTA BUTTON & THEME TOGGLE (RIGHT) -->
+      <div class="desktop-nav-actions d-none d-lg-flex">
+        <button class="theme-toggle-btn" id="themeToggleBtnDesktop" aria-label="Toggle dark/light theme">
+          <span class="themeIcon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+        </button>
+        <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary" style="padding: 0.6rem 1.35rem; font-size: 0.78rem;">Book Appointment</a>
+      </div>
+
+      <!-- MOBILE CONTROLS (MOBILE: [LOGO] [THEME TOGGLE] [HAMBURGER MENU]) -->
+      <div class="mobile-nav-controls d-flex align-items-center gap-2 d-lg-none">
+        <button class="theme-toggle-btn" id="themeToggleBtnMobile" aria-label="Toggle dark/light theme">
+          <span class="themeIcon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+        </button>
+        <!-- PREMIUM HAMBURGER -->
+        <button class="mob-hamburger" type="button" id="mobileNavToggler" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="mob-ham-bar"></span>
+          <span class="mob-ham-bar"></span>
+          <span class="mob-ham-bar"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MOBILE FULL-SCREEN EDITORIAL MENU -->
+  <div class="mob-menu-overlay d-lg-none" id="navbarCollapse" aria-hidden="true">
+    <!-- Decorative editorial watermark -->
+    <div class="mob-menu-watermark" aria-hidden="true">MEL</div>
+
+    <!-- Close button -->
+    <button class="mob-menu-close" id="mobileNavClose" aria-label="Close navigation">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Navigation List -->
+    <nav class="mob-menu-nav" aria-label="Mobile navigation">
+      <ul class="mob-nav-list">
+        <li class="mob-nav-item" style="--i:0">
+          <a class="mob-nav-link" href="index.html">
+            <span class="mob-nav-num">01</span>
+            <span class="mob-nav-label">Home</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:1">
+          <a class="mob-nav-link" href="about.html">
+            <span class="mob-nav-num">02</span>
+            <span class="mob-nav-label">About</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:2">
+          <a class="mob-nav-link active" href="services.html">
+            <span class="mob-nav-num">03</span>
+            <span class="mob-nav-label">Services</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:3">
+          <a class="mob-nav-link" href="gallery.html">
+            <span class="mob-nav-num">04</span>
+            <span class="mob-nav-label">Gallery</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:4">
+          <a class="mob-nav-link" href="index.html#reviews">
+            <span class="mob-nav-num">05</span>
+            <span class="mob-nav-label">Reviews</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:5">
+          <a class="mob-nav-link" href="index.html#faq">
+            <span class="mob-nav-num">06</span>
+            <span class="mob-nav-label">FAQ</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:6">
+          <a class="mob-nav-link" href="contact.html">
+            <span class="mob-nav-num">07</span>
+            <span class="mob-nav-label">Contact</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Premium booking CTA -->
+    <div class="mob-menu-cta">
+      <p class="mob-cta-label">READY FOR YOUR NEXT LOOK?</p>
+      <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="mob-cta-btn">BOOK APPOINTMENT</a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SECTION 1: CINEMATIC BACKGROUND HERO
+       ========================================== -->
+  <section class="hero-slider-section position-relative" style="height: 60vh; min-height: 480px;">
+    <div class="hero-slide active">
+      <div class="hero-slide-bg" style="background-image: url('images/services/service1.jpeg'); background-position: center 35%;"></div>
+      <div class="hero-overlay" style="background: linear-gradient(180deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0.55) 50%, rgba(10, 10, 10, 0.95) 100%);"></div>
+      <div class="container hero-content-wrapper text-start">
+        <div class="hero-text-box" style="max-width: 780px;">
+          <span class="eyebrow">THE MEL EXPERIENCE</span>
+          <h1 class="hero-headline display-4">Precision Services &amp; Pricing</h1>
+          <p class="hero-description" style="max-width: 680px;">
+            Every chair session is built around custom client consultation, tailored head-structure fading, and crisp straight-razor line-up execution inside Mel the Master Barber.
+          </p>
+          <div class="hero-cta-group d-flex justify-content-start mt-4">
+            <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary">BOOK AN APPOINTMENT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 2: EDITORIAL SERVICES INTRO
+       ========================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7 text-start">
+          <span class="eyebrow">THE MENU</span>
+          <h2 class="display-6 mb-3">Built Around Your Style.</h2>
+          <div class="gold-divider mb-4"></div>
+          <p class="lead" style="color: var(--accent);">
+            Transparent pricing for uncompromised master barber craftsmanship.
+          </p>
+          <p class="mb-0">
+            Whether you require a crisp skin fade, beard sculpting with warm lather hot towels, or a full haircut and beard combo, every service is delivered on schedule with undivided focus.
+          </p>
+        </div>
+        <div class="col-lg-5 text-start">
+          <div class="p-4 rounded border border-subtle" style="background-color: var(--bg-card);">
+            <div class="small text-uppercase tracking-wider mb-2" style="color: var(--accent); font-weight: 600;">Lounge Location</div>
+            <h4 class="h5 mb-2">Mel the Master Barber</h4>
+            <p class="small mb-3" style="color: var(--text-secondary); max-width: 260px;">5350 United Drive SE, Suite 105, Smyrna, GA</p>
+            <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-secondary">Reserve via Booksy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: FEATURED COMBO SPOTLIGHT (VIP)
+       ========================================== -->
+  <section class="pb-5 pt-2">
+    <div class="container">
+      <div class="vip-spotlight">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8 text-start">
+            <span class="vip-section-badge">Featured Signature Treatment</span>
+            <h2 class="mb-2" style="font-family:var(--font-heading); color:var(--text-primary);">Haircut, Facial &amp; Shampoo</h2>
+            <div style="width:40px;height:2px;background:var(--accent);margin:0.85rem 0 1rem;"></div>
+            <p class="mb-0" style="color:var(--text-secondary); font-size:1.05rem; max-width:520px;">
+              Includes Hair, Facial and Shampoo &mdash; the complete signature experience in one 30-minute session.
+            </p>
+          </div>
+          <div class="col-lg-4 text-start mt-3 mt-lg-0">
+            <div style="font-family:var(--font-body); font-size:3rem; font-weight:700; color:var(--accent); letter-spacing:-0.03em; line-height:1;">$135.00</div>
+            <div style="font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin:0.4rem 0 1.5rem;">30 min &bull; By Appointment</div>
+            <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary">Book Signature Combo &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ==========================================
+       SECTION 4: MAIN SERVICE CARDS MENU (VIP)
+       ========================================== -->
+  <section class="section-padding bg-secondary-section">
+    <div class="container">
+      <div class="text-start mb-5 pb-3">
+        <span class="vip-section-badge mb-3">Complete Menu</span>
+        <h2 style="font-family:var(--font-heading);">Master Barbering Services</h2>
+        <div class="gold-divider mb-4"></div>
+        <p class="mb-0" style="color:var(--text-secondary); font-size:0.95rem; max-width: 600px;">Every service is performed with precision, care, and undivided attention.</p>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- CARD 01 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">01</span>
+                <span class="vip-card-cat">Signature</span>
+              </div>
+              <h3 class="vip-card-title">Full Haircut with Beard</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Includes Hair and Beard.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$50</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 02 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">02</span>
+                <span class="vip-card-cat">Razor</span>
+              </div>
+              <h3 class="vip-card-title">Haircut w/ Razor</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Haircut with razor.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$50</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 03 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">03</span>
+                <span class="vip-card-cat">Youth</span>
+              </div>
+              <h3 class="vip-card-title">Kids Haircut (17 and under)</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Fresh haircuts for the young ones.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$30</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 04 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">04</span>
+                <span class="vip-card-cat">Precision</span>
+              </div>
+              <h3 class="vip-card-title">Regular Haircut</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Standard Haircut with Precision.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$45</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 05 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">05</span>
+                <span class="vip-card-cat">Essential</span>
+              </div>
+              <h3 class="vip-card-title">Shape Up</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Perfect for maintaining that crisp edge.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$25.00</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 06 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">06</span>
+                <span class="vip-card-cat">Grooming</span>
+              </div>
+              <h3 class="vip-card-title">Beard Trim</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Meticulous trimming for a neat, well-kept beard.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$25.00</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 07 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">07</span>
+                <span class="vip-card-cat">Creative</span>
+              </div>
+              <h3 class="vip-card-title">Designs</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Personalize your look with custom designs.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$5&ndash;$100+</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 08 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">08</span>
+                <span class="vip-card-cat">Refresh</span>
+              </div>
+              <h3 class="vip-card-title">Shampoo</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Premium shampoo treatment.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$10</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 09 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">09</span>
+                <span class="vip-card-cat">Detail</span>
+              </div>
+              <h3 class="vip-card-title">Eyebrows</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Precision eyebrow shaping.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$25.00</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 10 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">10</span>
+                <span class="vip-card-cat">Spa</span>
+              </div>
+              <h3 class="vip-card-title">Facial</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Rejuvenating facial treatment.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$65.00</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 11 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">11</span>
+                <span class="vip-card-cat">Combo</span>
+              </div>
+              <h3 class="vip-card-title">Haircut, Beard, &amp; Shampoo</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">The full triple-service experience.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$65</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 12 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">12</span>
+                <span class="vip-card-cat">Executive</span>
+              </div>
+              <h3 class="vip-card-title">Haircut &amp; Facial</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">Premium cut and facial combo.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$125.00</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 13 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="vip-service-card">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="vip-card-num">13</span>
+                <span class="vip-card-cat">Ultimate</span>
+              </div>
+              <h3 class="vip-card-title">Haircut, Facial, &amp; Shampoo</h3>
+              <div class="vip-card-sep"></div>
+              <p class="vip-card-desc">The ultimate grooming experience.</p>
+            </div>
+            <div>
+              <div class="vip-card-meta">
+                <span class="vip-card-price">$135.00</span>
+                <span class="vip-card-duration">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  30 min
+                </span>
+              </div>
+              <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="vip-card-btn">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: THE EXPERIENCE SECTION
+       ========================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="image-frame shadow-lg border border-subtle">
+            <img src="images/services/service2.jpeg" alt="Barber Chair Experience" class="w-100 h-100 object-fit-cover" loading="lazy">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <span class="eyebrow">THE EXPERIENCE</span>
+          <h2>More Than the Cut.</h2>
+          <div class="gold-divider"></div>
+          <p class="lead" style="color: var(--accent);">
+            Every service at Mel the Master Barber is an editorial chair experience.
+          </p>
+          <p>
+            From the moment you arrive, your time is respected. We begin with a dedicated consultation to analyze hair texture, scalp growth, and facial structure before making the first cut.
+          </p>
+          <p>
+            Every service concludes with essential hot towels, clean razor line finishing, and styling product application so you walk out looking sharp.
+          </p>
+          <div class="mt-4">
+            <a href="about.html" class="btn-gold-secondary">Read Our Story &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 6: GROOMING DETAILS SECTION
+       ========================================== -->
+  <section class="section-padding bg-secondary-section">
+    <div class="container">
+      <div class="row g-4 text-center">
+        <div class="col-md-4">
+          <div class="p-4 rounded border border-subtle h-100 d-flex flex-column justify-content-center align-items-center position-relative overflow-hidden" style="background-color: var(--bg-card); transition: all 0.4s ease;">
+            <h4 class="h5 mb-2 position-relative z-1" style="color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.05em;">Consultation</h4>
+            <div class="gold-divider mx-auto my-2 position-relative z-1" style="width: 30px; height: 1px;"></div>
+            <p class="small mb-0 position-relative z-1 mt-2" style="color: var(--text-secondary);">Understand your desired style and head shape before the cut begins.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded border border-subtle h-100 d-flex flex-column justify-content-center align-items-center position-relative overflow-hidden" style="background-color: var(--bg-card); transition: all 0.4s ease;">
+            <h4 class="h5 mb-2 position-relative z-1" style="color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.05em;">Precision</h4>
+            <div class="gold-divider mx-auto my-2 position-relative z-1" style="width: 30px; height: 1px;"></div>
+            <p class="small mb-0 position-relative z-1 mt-2" style="color: var(--text-secondary);">Detailed cutting, taper blending, beard sculpting, and finishing razor lines.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded border border-subtle h-100 d-flex flex-column justify-content-center align-items-center position-relative overflow-hidden" style="background-color: var(--bg-card); transition: all 0.4s ease;">
+            <h4 class="h5 mb-2 position-relative z-1" style="color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.05em;">Finish</h4>
+            <div class="gold-divider mx-auto my-2 position-relative z-1" style="width: 30px; height: 1px;"></div>
+            <p class="small mb-0 position-relative z-1 mt-2" style="color: var(--text-secondary);">Soothing hot towel wrap and premium styling product application.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 7: FINAL BOOKING CTA
+       ========================================== -->
+  <section class="section-padding text-center" style="background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); border-top: 1px solid var(--border-gold);">
+    <div class="container">
+      <div class="mx-auto" style="max-width: 700px;">
+        <span class="eyebrow">READY FOR YOUR NEXT LOOK?</span>
+        <h2 class="mb-3">Choose Your Service. Book Your Chair.</h2>
+        <p class="mb-4" style="color: var(--text-secondary);">
+          Select your required service and reserve your appointment time on Booksy.
+        </p>
+        <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary">BOOK YOUR APPOINTMENT NOW</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 8: BRANDED FOOTER (EXACT HOME/ABOUT FOOTER)
+       ========================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      
+      <div class="footer-brand-statement">
+        LOOK SHARP. <span>FEEL CONFIDENT.</span>
+      </div>
+
+      <div class="row g-4 pt-3">
+        <div class="col-lg-3 col-md-6">
+          <div class="mb-3">
+            <img src="images/navbar/footer-logo.jpeg" alt="Mel The Master Barber Logo" class="footer-logo-img">
+          </div>
+          <p>Luxury master barbering services at Mel the Master Barber in Smyrna, GA. Precision cuts, beard grooming, and style craftsmanship.</p>
+          
+          <!-- OFFICIAL VERIFIED SOCIAL LINKS -->
+          
+        </div>
+        
+        <!-- QUICK LINKS WITH VIP ARROWS -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Quick Links</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2">
+            <li><a href="index.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Home</a></li>
+            <li><a href="about.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> About</a></li>
+            <li><a href="services.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Services</a></li>
+            <li><a href="gallery.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Gallery</a></li>
+            <li><a href="contact.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTACT INFORMATION COLUMN WITH ICONS -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Contact Info</h5>
+          <p class="mb-2 d-flex align-items-start gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" class="mt-1" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span><a href="https://www.google.com/maps/search/?api=1&query=Gold+Room+Grooming+Lounge+5350+United+Drive+SE+Suite+105+Smyrna+GA" target="_blank" rel="noopener" class="interactive-contact-link">5350 United Drive SE, Suite 105, Smyrna, GA</a></span>
+          </p>
+          <p class="mb-2 d-flex align-items-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span><a href="tel:7708951392" class="interactive-contact-link">(770) 895-1392</a></span>
+          </p>
+          <p class="mb-2 d-flex align-items-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span><a href="mailto:melcuts@gmail.com" class="interactive-contact-link">melcuts@gmail.com</a></span>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Business Hours</h5>
+          <p class="mb-1">Mon &ndash; Thurs: 7:00 AM &ndash; 6:00 PM</p>
+          <p class="mb-1">Fri: 8:00 AM &ndash; 6:00 PM</p>
+          <p class="mb-1">Sat: 8:00 AM &ndash; 5:00 PM</p>
+          <p class="mb-1">Sun: 12:00 PM &ndash; 4:00 PM</p>
+          
+          <!-- OFFICIAL 3 SOCIAL ICONS (FB, IG, GMAIL) DIRECTLY BELOW BUSINESS HOURS -->
+          <div class="footer-social-links d-flex align-items-center gap-2 mt-3 text-center justify-content-center">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/melthemasterbarber" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook Profile" title="Facebook">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.65 13.75 5.65c1.08 0 2.21.19 2.21.19v2.43h-1.25c-1.23 0-1.61.77-1.61 1.56V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/melthemasterbarber/" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram Profile" title="Instagram">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- Gmail -->
+            <a href="mailto:info@themelmasterbarber.com" class="footer-social-icon" aria-label="Send Email via Gmail" title="Gmail">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center pt-4 mt-5 border-top border-secondary opacity-50">
+        <p class="meduim mb-0">&copy; 2026 Mel The Master Barber. All rights reserved.</p>
+        <p class="meduim mb-0">Designed and Developed by <a href="https://tamoor-dev-neon.vercel.app" target="_blank" rel="noopener noreferrer" class="fw-bold">Temii-Tech</a></p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS Controller -->
+  <script src="js/main.js"></script>
+  <!-- AI Chatbot Logic -->
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

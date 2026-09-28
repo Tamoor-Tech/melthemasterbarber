@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Barber Work Gallery | Mel The Master Barber Smyrna GA</title>
+  <meta name="description" content="Official portfolio of precision haircuts, skin taper fades, custom beard sculpting, and straight-razor detailing by Mel The Master Barber at Mel the Master Barber in Smyrna, GA.">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS Design System & Responsive Rules -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="css/chatbot.css">
+
+  <!-- Gallery Page: VIP Luxury Editorial Album Styles -->
+  <style>
+    /* ---- VIP Luxury Editorial Album Grid System ---- */
+    .vip-editorial-gallery {
+      position: relative;
+      background: radial-gradient(circle at 50% 20%, rgba(198, 161, 91, 0.07) 0%, transparent 70%);
+      padding-top: 1rem;
+      padding-bottom: 4rem;
+    }
+
+    .vip-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 15px 0;
+    }
+
+    /* VIP Editorial Card Container */
+    .vip-gallery-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #0d0d0d;
+      border-radius: 4px;
+      padding: 7px; /* Luxury photo album inner border frame */
+      border: 1px solid rgba(198, 161, 91, 0.22);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      transition: border-color 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+    }
+
+    /* Art-Directed Asymmetric Album Shifts (Desktop/Tablet) */
+    @media (min-width: 768px) {
+      .vip-gallery-card.shift-up {
+        transform: translateY(-18px);
+      }
+      .vip-gallery-card.shift-down {
+        transform: translateY(18px);
+      }
+      .vip-gallery-card.shift-left {
+        transform: translateX(-10px);
+      }
+      .vip-gallery-card.shift-right {
+        transform: translateX(10px);
+      }
+      .vip-gallery-card.shift-up-right {
+        transform: translateY(-14px) translateX(8px);
+      }
+      .vip-gallery-card.shift-down-left {
+        transform: translateY(16px) translateX(-8px);
+      }
+    }
+
+    /* Subtle Mobile Asymmetry (< 768px) */
+    @media (max-width: 767.98px) {
+      .vip-gallery-card.shift-up,
+      .vip-gallery-card.shift-up-right {
+        transform: translateY(-6px);
+      }
+      .vip-gallery-card.shift-down,
+      .vip-gallery-card.shift-down-left {
+        transform: translateY(6px);
+      }
+    }
+
+    /* Gold Corner Bracket Accents on Album Cards */
+    .vip-gallery-card::before {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid rgba(198, 161, 91, 0.12);
+      pointer-events: none;
+      z-index: 3;
+      transition: border-color 0.45s ease;
+    }
+
+    .vip-gallery-card::after {
+      content: '';
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 14px;
+      height: 14px;
+      border-right: 2px solid rgba(198, 161, 91, 0.4);
+      border-bottom: 2px solid rgba(198, 161, 91, 0.4);
+      pointer-events: none;
+      z-index: 4;
+      transition: all 0.4s ease;
+    }
+
+    .vip-gallery-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(198, 161, 91, 0.25);
+    }
+
+    .vip-gallery-card:hover::before {
+      border-color: rgba(198, 161, 91, 0.45);
+    }
+
+    .vip-gallery-card:hover::after {
+      border-color: var(--accent);
+      width: 18px;
+      height: 18px;
+    }
+
+    .vip-gallery-card:hover::before {
+      border-color: rgba(198, 161, 91, 0.35);
+    }
+
+    /* Inner Frame Image Wrapping */
+    .vip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 2px;
+      background-color: #050505;
+    }
+
+    .vip-card-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+      filter: brightness(0.94) contrast(1.02);
+    }
+
+    .vip-gallery-card:hover .vip-card-inner img {
+      transform: scale(1.06);
+      filter: brightness(1.03) contrast(1.05);
+    }
+
+    /* Editorial Corner Number Badge */
+    .vip-card-num {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: rgba(245, 241, 232, 0.75);
+      background: rgba(10, 10, 10, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 3px 8px;
+      border-radius: 2px;
+      border: 1px solid rgba(198, 161, 91, 0.25);
+      z-index: 4;
+      transition: all 0.35s ease;
+    }
+
+    .vip-gallery-card:hover .vip-card-num {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(10, 10, 10, 0.88);
+      transform: translateY(-1px);
+    }
+
+    /* Editorial Corner View Indicator */
+    .vip-card-badge {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      background: rgba(10, 10, 10, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(198, 161, 91, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      z-index: 4;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.35s ease;
+    }
+
+    .vip-gallery-card:hover .vip-card-badge {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Hover Overlay Presentation */
+    .vip-gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.1) 0%, rgba(10, 10, 10, 0.45) 50%, rgba(8, 8, 8, 0.94) 100%);
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.25rem 1.15rem;
+      z-index: 3;
+    }
+
+    .vip-gallery-card:hover .vip-gallery-overlay {
+      opacity: 1;
+    }
+
+    .vip-gallery-overlay .vip-cat {
+      font-family: var(--font-body);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+      transform: translateY(8px);
+      transition: transform 0.4s ease;
+    }
+
+    .vip-gallery-overlay .vip-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin: 0;
+      line-height: 1.3;
+      transform: translateY(8px);
+      transition: transform 0.4s ease 0.05s;
+    }
+
+    .vip-gallery-card:hover .vip-gallery-overlay .vip-cat,
+    .vip-gallery-card:hover .vip-gallery-overlay .vip-title {
+      transform: translateY(0);
+    }
+
+    /* Gallery Header Styling Refinements */
+    .editorial-header-subtitle {
+      font-family: var(--font-heading);
+      letter-spacing: 0.28em;
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .editorial-double-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .editorial-double-divider span {
+      height: 1px;
+      width: 45px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .editorial-double-divider i {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      transform: rotate(45deg);
+      display: inline-block;
+    }
+
+    /* Responsive Grid Breakpoints */
+    @media (max-width: 1199.98px) {
+      .vip-gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .vip-gallery-card:nth-child(even) {
+        transform: none;
+      }
+    }
+
+    /* Single-Column Mobile VIP Album Layout (<= 767.98px) */
+    @media (max-width: 767.98px) {
+      .vip-gallery-grid {
+        grid-template-columns: 1fr; /* EXACTLY ONE COLUMN ON MOBILE */
+        gap: 26px;
+        padding: 10px 0;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .vip-gallery-card {
+        padding: 7px;
+        aspect-ratio: 1 / 1;
+      }
+      /* Subtle alternating left/right shift on mobile single column */
+      .vip-gallery-card:nth-child(odd) {
+        transform: translateX(-4px);
+      }
+      .vip-gallery-card:nth-child(even) {
+        transform: translateX(4px);
+      }
+      .vip-gallery-card:hover {
+        transform: translateY(-4px) scale(1.01);
+      }
+      .vip-card-num {
+        top: 10px;
+        left: 10px;
+        font-size: 0.7rem;
+        padding: 3px 6px;
+      }
+      .vip-card-badge {
+        top: 10px;
+        right: 10px;
+        width: 26px;
+        height: 26px;
+        opacity: 0.95;
+      }
+      .vip-card-badge svg {
+        width: 13px;
+        height: 13px;
+      }
+      .vip-gallery-overlay {
+        padding: 1rem 0.9rem;
+        opacity: 0.9;
+        background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 8, 0.88) 100%);
+      }
+      .vip-gallery-overlay .vip-cat,
+      .vip-gallery-overlay .vip-title {
+        transform: translateY(0);
+      }
+      .vip-gallery-overlay .vip-cat {
+        font-size: 0.62rem;
+      }
+      .vip-gallery-overlay .vip-title {
+        font-size: 0.92rem;
+      }
+    }
+
+    /* ---- Fullscreen VIP Luxury Lightbox Modal ---- */
+    #galleryLightboxModal .modal-dialog {
+      max-width: 1100px;
+    }
+    #galleryLightboxModal .modal-content {
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(198, 161, 91, 0.35);
+      border-radius: 8px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(198, 161, 91, 0.15);
+      overflow: hidden;
+    }
+    #galleryLightboxModal .modal-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(198, 161, 91, 0.15);
+      background: rgba(15, 15, 15, 0.6);
+    }
+    #galleryLightboxModal #lightboxCaptionTitle {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+    #galleryLightboxModal .lightbox-counter {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      border: 1px solid rgba(198, 161, 91, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+    }
+    #galleryLightboxModal .modal-body {
+      position: relative;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    #galleryLightboxModal #lightboxModalImg {
+      max-height: 75vh;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 1px rgba(198, 161, 91, 0.4);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #galleryLightboxModal #lightboxCaptionSub {
+      margin-top: 0.85rem;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.03em;
+    }
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(15, 15, 15, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(198, 161, 91, 0.3);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    .lightbox-nav-btn:hover {
+      background: var(--accent);
+      color: #0A0A0A;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(198, 161, 91, 0.5);
+    }
+    .lightbox-prev-btn { left: 1rem; }
+    .lightbox-next-btn { right: 1rem; }
+
+    @media (max-width: 575.98px) {
+      .lightbox-nav-btn {
+        width: 38px;
+        height: 38px;
+      }
+      .lightbox-prev-btn { left: 0.5rem; }
+      .lightbox-next-btn { right: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       PREMIUM FLOATING NAVBAR (EXACT HOME PAGE MARKUP)
+       ========================================== -->
+  <div class="navbar-floating-wrapper" id="navbarWrapper">
+    <div class="navbar-floating-container">
+      
+      <!-- 1. LOGO (LEFT) -->
+      <a class="navbar-brand navbar-brand-custom" href="index.html">
+        <img src="images/navbar/logo.jpeg" alt="Mel The Master Barber Logo" class="brand-logo-img">
+      </a>
+
+      <!-- 2. DESKTOP NAV LINKS (CENTER - EXACT 1-LINE 14.5px) -->
+      <ul class="desktop-nav-links d-none d-lg-flex">
+        <li><a class="nav-link-custom" href="index.html">Home</a></li>
+        <li><a class="nav-link-custom" href="about.html">About</a></li>
+        <li><a class="nav-link-custom" href="services.html">Services</a></li>
+        <li><a class="nav-link-custom active" href="gallery.html">Gallery</a></li>
+        <li><a class="nav-link-custom" href="contact.html">Contact</a></li>
+      </ul>
+
+      <!-- 3. CTA BUTTON & THEME TOGGLE (RIGHT) -->
+      <div class="desktop-nav-actions d-none d-lg-flex">
+        <button class="theme-toggle-btn" id="themeToggleBtnDesktop" aria-label="Toggle dark/light theme">
+          <span class="themeIcon">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12.3 2c.43 0 .77.35.7.78-.47 2.87.41 5.84 2.45 7.88 2.04 2.04 5.01 2.92 7.88 2.45.43-.07.78.27.78.7 0 5.52-4.48 10-10 10S2 19.32 2 13.8 6.78 2 12.3 2z"/></svg>
+          </span>
+        </button>
+        <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary" style="padding: 0.6rem 1.35rem; font-size: 0.78rem;">Book Appointment</a>
+      </div>
+
+      <!-- MOBILE CONTROLS (MOBILE: [LOGO] [THEME TOGGLE] [HAMBURGER MENU]) -->
+      <div class="mobile-nav-controls d-flex align-items-center gap-2 d-lg-none">
+        <button class="theme-toggle-btn" id="themeToggleBtnMobile" aria-label="Toggle dark/light theme">
+          <span class="themeIcon">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12.3 2c.43 0 .77.35.7.78-.47 2.87.41 5.84 2.45 7.88 2.04 2.04 5.01 2.92 7.88 2.45.43-.07.78.27.78.7 0 5.52-4.48 10-10 10S2 19.32 2 13.8 6.78 2 12.3 2z"/></svg>
+          </span>
+        </button>
+        <!-- PREMIUM HAMBURGER -->
+        <button class="mob-hamburger" type="button" id="mobileNavToggler" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="mob-ham-bar"></span>
+          <span class="mob-ham-bar"></span>
+          <span class="mob-ham-bar"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MOBILE FULL-SCREEN EDITORIAL MENU -->
+  <div class="mob-menu-overlay d-lg-none" id="navbarCollapse" aria-hidden="true">
+    <!-- Decorative editorial watermark -->
+    <div class="mob-menu-watermark" aria-hidden="true">MEL</div>
+
+    <!-- Close button -->
+    <button class="mob-menu-close" id="mobileNavClose" aria-label="Close navigation">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Navigation List -->
+    <nav class="mob-menu-nav" aria-label="Mobile navigation">
+      <ul class="mob-nav-list">
+        <li class="mob-nav-item" style="--i:0">
+          <a class="mob-nav-link" href="index.html">
+            <span class="mob-nav-num">01</span>
+            <span class="mob-nav-label">Home</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:1">
+          <a class="mob-nav-link" href="about.html">
+            <span class="mob-nav-num">02</span>
+            <span class="mob-nav-label">About</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:2">
+          <a class="mob-nav-link" href="services.html">
+            <span class="mob-nav-num">03</span>
+            <span class="mob-nav-label">Services</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:3">
+          <a class="mob-nav-link active" href="gallery.html">
+            <span class="mob-nav-num">04</span>
+            <span class="mob-nav-label">Gallery</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:4">
+          <a class="mob-nav-link" href="index.html#reviews">
+            <span class="mob-nav-num">05</span>
+            <span class="mob-nav-label">Reviews</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:5">
+          <a class="mob-nav-link" href="index.html#faq">
+            <span class="mob-nav-num">06</span>
+            <span class="mob-nav-label">FAQ</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li class="mob-nav-item" style="--i:6">
+          <a class="mob-nav-link" href="contact.html">
+            <span class="mob-nav-num">07</span>
+            <span class="mob-nav-label">Contact</span>
+            <span class="mob-nav-arrow">&rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Premium booking CTA -->
+    <div class="mob-menu-cta">
+      <p class="mob-cta-label">READY FOR YOUR NEXT LOOK?</p>
+      <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="mob-cta-btn">BOOK APPOINTMENT</a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SECTION 1: CINEMATIC BACKGROUND HERO
+       ========================================== -->
+  <section class="hero-slider-section position-relative" style="height: 60vh; min-height: 480px;">
+    <div class="hero-slide active">
+      <div class="hero-slide-bg" style="background-image: url('images/gallery/gallery1\ \(6\).jpeg'); background-position: center 25%;"></div>
+      <div class="hero-overlay" style="background: linear-gradient(180deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0.55) 50%, rgba(10, 10, 10, 0.95) 100%);"></div>
+      <div class="container hero-content-wrapper text-center">
+        <div class="hero-text-box mx-auto" style="max-width: 780px;">
+          <span class="eyebrow">THE WORK</span>
+          <h1 class="hero-headline display-4">Master Crafts &amp; Precision</h1>
+          <p class="hero-description mx-auto" style="max-width: 680px;">
+            A visual showcase of tailored skin fades, sharp perimeter edge-ups, beard sculpting, and luxury grooming craftsmanship from the chair.
+          </p>
+          <div class="hero-cta-group justify-content-center mt-4">
+            <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary">BOOK AN APPOINTMENT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ==========================================
+       SECTION 2: EDITORIAL GALLERY INTRO
+       ========================================== -->
+  <section class="section-padding pb-4">
+    <div class="container">
+      <div class="text-center max-width-700 mx-auto">
+        <span class="eyebrow">EDITORIAL ALBUM</span>
+        <h2 class="display-5 mb-2 fw-semibold">GALLERY</h2>
+        <div class="editorial-header-subtitle">THE CRAFT &bull; THE STYLE &bull; THE EXPERIENCE</div>
+        <div class="editorial-double-divider">
+          <span></span>
+          <i></i>
+          <span></span>
+        </div>
+        <p class="lead" style="color: var(--text-secondary); font-size: 1.05rem; max-width: 660px; margin: 0 auto;">
+          An art-directed portfolio showcasing tailored skin taper fades, sharp perimeter razor line-ups, custom beard sculpting, and luxury grooming sessions from Mel the Master Barber.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: VIP LUXURY EDITORIAL ALBUM GRID
+       ========================================== -->
+  <section class="pb-5 vip-editorial-gallery">
+    <div class="container">
+      <div class="vip-gallery-grid">
+
+        <!-- 01 -->
+        <div class="vip-gallery-card shift-down lightbox-trigger"
+             data-index="0"
+             data-src="images/gallery/gallery1 (1).jpeg"
+             data-caption-title="PRECISION SKIN FADE"
+             data-caption-sub="Custom skin taper with straight-razor perimeter detailing.">
+          <span class="vip-card-num">01</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (1).jpeg" alt="Precision Skin Fade & Perimeter Line-Up" loading="lazy" style="object-position: center top;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">HAIRCUT &amp; FADE</span>
+              <p class="vip-title">Precision Skin Fade &amp; Line-Up</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="vip-gallery-card shift-up-right lightbox-trigger"
+             data-index="1"
+             data-src="images/gallery/gallery1 (2).jpeg"
+             data-caption-title="BEARD SCULPTING"
+             data-caption-sub="Defined cheek lines &amp; warm lather hot towel wrap.">
+          <span class="vip-card-num">02</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (2).jpeg" alt="Beard Sculpting &amp; Razor Finish" loading="lazy" style="object-position: center top;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">BEARD GROOMING</span>
+              <p class="vip-title">Beard Sculpting &amp; Razor Finish</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="vip-gallery-card shift-down-left lightbox-trigger"
+             data-index="2"
+             data-src="images/gallery/gallery1 (3).jpeg"
+             data-caption-title="CLASSIC TAPER"
+             data-caption-sub="Timeless shape with modern precision.">
+          <span class="vip-card-num">03</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (3).jpeg" alt="Classic Taper Haircut" loading="lazy">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">CLASSIC CUT</span>
+              <p class="vip-title">Classic Taper &amp; Haircut</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="vip-gallery-card shift-up lightbox-trigger"
+             data-index="3"
+             data-src="images/gallery/gallery1 (4).jpeg"
+             data-caption-title="HAIRCUT &amp; BEARD COMBO"
+             data-caption-sub="Complete grooming transformation. Master haircut + beard sculpting.">
+          <span class="vip-card-num">04</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (4).jpeg" alt="Executive Haircut &amp; Beard Combo" loading="lazy" style="object-position: center 30%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">COMBO SPECIAL</span>
+              <p class="vip-title">Executive Combo Experience</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="vip-gallery-card shift-down lightbox-trigger"
+             data-index="4"
+             data-src="images/gallery/gallery1 (5).jpeg"
+             data-caption-title="RAZOR EDGE-UP"
+             data-caption-sub="Sharp perimeter line-up and crisp detailing.">
+          <span class="vip-card-num">05</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (5).jpeg" alt="Sharp Straight-Razor Edge-Up" loading="lazy" style="object-position: center 20%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">LINE-UP</span>
+              <p class="vip-title">Straight-Razor Edge-Up</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="vip-gallery-card shift-up-right lightbox-trigger"
+             data-index="5"
+             data-src="images/gallery/gallery1 (7).jpeg"
+             data-caption-title="MASTER BARBER"
+             data-caption-sub="The craft, focus, and passion behind the chair.">
+          <span class="vip-card-num">06</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (7).jpeg" alt="Master Barber Mel at Work" loading="lazy" style="object-position: center top;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">BEHIND THE CHAIR</span>
+              <p class="vip-title">Mel The Master Barber</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="vip-gallery-card shift-down lightbox-trigger"
+             data-index="6"
+             data-src="images/gallery/new-pic.jpeg"
+             data-caption-title="FINISHING DETAILS"
+             data-caption-sub="Signature razor-edge finishing and style product application.">
+          <span class="vip-card-num">07</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/new-pic.jpeg" alt="Signature Haircut Finishing Details" loading="lazy" style="object-position: center 60%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">FINISHING DETAILS</span>
+              <p class="vip-title">Signature Razor-Edge Finishing</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="vip-gallery-card shift-up-right lightbox-trigger"
+             data-index="7"
+             data-src="images/gallery/gallery1 (8).jpeg"
+             data-caption-title="HOT TOWEL TREATMENT"
+             data-caption-sub="Warm lather application before razor shaping.">
+          <span class="vip-card-num">08</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (8).jpeg" alt="Hot Towel Beard Shaping" loading="lazy" style="object-position: center 40%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">HOT TOWEL</span>
+              <p class="vip-title">Warm Lather Treatment</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 -->
+        <div class="vip-gallery-card shift-down-left lightbox-trigger"
+             data-index="8"
+             data-src="images/gallery/gallery1 (9).jpeg"
+             data-caption-title="TAPER CLOSE-UP"
+             data-caption-sub="Seamless blend and precise taper graduation.">
+          <span class="vip-card-num">09</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (9).jpeg" alt="Taper Fade Cut Close-Up" loading="lazy">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">TAPER DETAIL</span>
+              <p class="vip-title">Seamless Blend</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="vip-gallery-card shift-up lightbox-trigger"
+             data-index="9"
+             data-src="images/gallery/gallery1 (10).jpeg"
+             data-caption-title="STYLE & SHAPE"
+             data-caption-sub="Defined silhouette and sharp side profile.">
+          <span class="vip-card-num">10</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (10).jpeg" alt="Style &amp; Shape Side Profile" loading="lazy" style="object-position: center 40%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">SIDE PROFILE</span>
+              <p class="vip-title">Style &amp; Shape</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="vip-gallery-card shift-down-left lightbox-trigger"
+             data-index="10"
+             data-src="images/gallery/gallery1 (11).jpeg"
+             data-caption-title="CLEAN FINISH"
+             data-caption-sub="Final look after precision haircut and styling.">
+          <span class="vip-card-num">11</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (11).jpeg" alt="Clean Finish After Haircut" loading="lazy" style="object-position: center 35%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">CLEAN FINISH</span>
+              <p class="vip-title">After The Cut</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="vip-gallery-card shift-up-right lightbox-trigger"
+             data-index="11"
+             data-src="images/gallery/gallery1 (12).jpeg"
+             data-caption-title="MASTER PRECISION"
+             data-caption-sub="Dedicated focus on every cut and line.">
+          <span class="vip-card-num">12</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (12).jpeg" alt="Barber Master Precision Work" loading="lazy" style="object-position: center 20%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">PRECISION WORK</span>
+              <p class="vip-title">Master Hands at Work</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="vip-gallery-card shift-down lightbox-trigger"
+             data-index="12"
+             data-src="images/gallery/gallery1 (13).jpeg"
+             data-caption-title="NATURAL HAIRLINE FADE"
+             data-caption-sub="Natural hairline preservation with smooth fade graduation.">
+          <span class="vip-card-num">13</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (13).jpeg" alt="Fade Cut Natural Hairline" loading="lazy" style="object-position: center 55%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">NATURAL HAIRLINE</span>
+              <p class="vip-title">Natural Hairline Fade</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="vip-gallery-card shift-up lightbox-trigger"
+             data-index="13"
+             data-src="images/gallery/gallery1 (14).jpeg"
+             data-caption-title="LOUNGE EXPERIENCE"
+             data-caption-sub="Premium grooming inside Mel the Master Barber, Smyrna GA.">
+          <span class="vip-card-num">14</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (14).jpeg" alt="Grooming Lounge Chair Session" loading="lazy" style="object-position: center 60%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">GOLD ROOM LOUNGE</span>
+              <p class="vip-title">Lounge Grooming Experience</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="vip-gallery-card shift-down-left lightbox-trigger"
+             data-index="14"
+             data-src="images/gallery/gallery1 (15).jpeg"
+             data-caption-title="NAPE TAPER"
+             data-caption-sub="Precise nape taper and neck clean-up using straight razor.">
+          <span class="vip-card-num">15</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (15).jpeg" alt="Nape Taper &amp; Neck Clean-Up" loading="lazy" style="object-position: center bottom;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">NAPE &amp; NECK</span>
+              <p class="vip-title">Nape Taper &amp; Neck Clean-Up</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16 -->
+        <div class="vip-gallery-card shift-up-right lightbox-trigger"
+             data-index="15"
+             data-src="images/gallery/gallery1 (16).jpeg"
+             data-caption-title="CONSULTATION"
+             data-caption-sub="Personal hair consultation before cutting begins.">
+          <span class="vip-card-num">16</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (16).jpeg" alt="Consultation Before the Cut" loading="lazy" style="object-position: center 65%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">CONSULTATION</span>
+              <p class="vip-title">Before The Cut Begins</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 17 -->
+        <div class="vip-gallery-card shift-down lightbox-trigger"
+             data-index="16"
+             data-src="images/gallery/gallery1 (17).jpeg"
+             data-caption-title="MEL THE MASTER BARBER"
+             data-caption-sub="Mel the Master Barber — Smyrna, GA. Precision. Craft. Consistency.">
+          <span class="vip-card-num">17</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (17).jpeg" alt="Master Barber Mel — Mel the Master Barber Smyrna GA" loading="lazy" style="object-position: center 35%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">THE MASTER BARBER</span>
+              <p class="vip-title">Mel The Master Barber</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 18 -->
+        <div class="vip-gallery-card shift-up-right lightbox-trigger"
+             data-index="17"
+             data-src="images/gallery/gallery1 (18).jpeg"
+             data-caption-title="MASTER HAIRCUT SESSION"
+             data-caption-sub="Full-service master haircut including consultation, cut, and styled finish.">
+          <span class="vip-card-num">18</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (18).jpeg" alt="Full View Master Haircut Session" loading="lazy" style="object-position: 40% center;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">FULL SESSION</span>
+              <p class="vip-title">Master Haircut Experience</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19 -->
+        <div class="vip-gallery-card shift-down-left lightbox-trigger"
+             data-index="18"
+             data-src="images/gallery/gallery1 (19).jpeg"
+             data-caption-title="YOUTH HAIRCUT"
+             data-caption-sub="Precision master haircut for young gentlemen.">
+          <span class="vip-card-num">19</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (19).jpeg" alt="Kids Haircut Precision Work" loading="lazy" style="object-position: 60% center;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">YOUTH CUT</span>
+              <p class="vip-title">Kids Master Haircut</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20 -->
+        <div class="vip-gallery-card shift-up lightbox-trigger"
+             data-index="19"
+             data-src="images/gallery/gallery1 (6).jpeg"
+             data-caption-title="EDITORIAL CRAFT"
+             data-caption-sub="A final look that speaks for itself.">
+          <span class="vip-card-num">20</span>
+          <div class="vip-card-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <div class="vip-card-inner">
+            <img src="images/gallery/gallery1 (6).jpeg" alt="Editorial Master Barbering" loading="lazy" style="object-position: center 25%;">
+            <div class="vip-gallery-overlay">
+              <span class="vip-cat">CRAFT</span>
+              <p class="vip-title">Editorial Barbering</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 4: FEATURED DETAILS SPOTLIGHT
+       ========================================== -->
+  <section class="section-padding bg-secondary-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="position-relative rounded overflow-hidden shadow-lg border border-subtle" style="height: 420px;">
+            <img src="images/gallery/gallery1 (9).jpeg" alt="Master Barbering Details" class="w-100 h-100 object-fit-cover">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <span class="eyebrow">DETAILS MATTER</span>
+          <h2>Crafted With Intent.</h2>
+          <div class="gold-divider"></div>
+          <p class="lead" style="color: var(--accent);">
+            Every client session is an individual commitment to precision.
+          </p>
+          <p class="mb-4">
+            We focus on clean symmetry, natural hairline enhancement, tailored beard blends, and complete client comfort. From essential hot towel conditioning to final styling, no detail is overlooked.
+          </p>
+          <a href="services.html" class="btn-gold-secondary">VIEW ALL SERVICES &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: FINAL BOOKING CTA
+       ========================================== -->
+  <section class="section-padding text-center" style="background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%); border-top: 1px solid var(--border-gold);">
+    <div class="container mx-auto" style="max-width: 700px;">
+      <span class="eyebrow">LIKE WHAT YOU SEE?</span>
+      <h2 class="mb-3">Let's Create Your Next Look.</h2>
+      <p class="mb-4" style="color: var(--text-secondary);">
+        Reserve your chair time online via Booksy and experience master barbering precision.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="https://mel-the-master-barber.square.site/" target="_blank" rel="noopener" class="btn-gold-primary">BOOK YOUR APPOINTMENT NOW</a>
+        <a href="services.html" class="btn-gold-secondary">VIEW SERVICES MENU</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       VANILLA LIGHTBOX MODAL (UPGRADED VIP LUXURY)
+       ========================================== -->
+  <div id="galleryLightboxModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <div id="lightboxCaptionTitle"></div>
+            <span class="lightbox-counter" id="lightboxCounter">01 / 20</span>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center position-relative">
+          <!-- Previous Button -->
+          <button class="lightbox-nav-btn lightbox-prev-btn" id="lightboxPrevBtn" aria-label="Previous Image">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          
+          <!-- Image Container -->
+          <img id="lightboxModalImg" src="" alt="Enlarged gallery showcase" class="img-fluid">
+          
+          <!-- Next Button -->
+          <button class="lightbox-nav-btn lightbox-next-btn" id="lightboxNextBtn" aria-label="Next Image">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+        </div>
+        <div class="modal-footer justify-content-center border-top-0 pt-0 pb-3">
+          <div id="lightboxCaptionSub" class="text-center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SECTION 6: BRANDED FOOTER (EXACT HOME/ABOUT/SERVICES FOOTER)
+       ========================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      
+      <div class="footer-brand-statement">
+        LOOK SHARP. <span>FEEL CONFIDENT.</span>
+      </div>
+
+      <div class="row g-4 pt-3">
+        <div class="col-lg-3 col-md-6">
+          <div class="mb-3">
+            <img src="images/navbar/footer-logo.jpeg" alt="Mel The Master Barber Logo" class="footer-logo-img">
+          </div>
+          <p>Luxury master barbering services at Mel the Master Barber in Smyrna, GA. Precision cuts, beard grooming, and style craftsmanship.</p>
+        </div>
+        
+        <!-- QUICK LINKS WITH VIP ARROWS -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Quick Links</h5>
+          <ul class="list-unstyled d-flex flex-column gap-2">
+            <li><a href="index.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Home</a></li>
+            <li><a href="about.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> About</a></li>
+            <li><a href="services.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Services</a></li>
+            <li><a href="gallery.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Gallery</a></li>
+            <li><a href="contact.html" class="footer-vip-link"><span class="arrow">&rsaquo;</span> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- CONTACT INFORMATION COLUMN WITH ICONS -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Contact Info</h5>
+          <p class="mb-2 d-flex align-items-start gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" class="mt-1" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span><a href="https://www.google.com/maps/search/?api=1&query=Gold+Room+Grooming+Lounge+5350+United+Drive+SE+Suite+105+Smyrna+GA" target="_blank" rel="noopener" class="interactive-contact-link">5350 United Drive SE, Suite 105, Smyrna, GA</a></span>
+          </p>
+          <p class="mb-2 d-flex align-items-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span><a href="tel:7708951392" class="interactive-contact-link">(770) 895-1392</a></span>
+          </p>
+          <p class="mb-2 d-flex align-items-center gap-2">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="color: var(--accent); flex-shrink: 0;"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span><a href="mailto:melcuts@gmail.com" class="interactive-contact-link">melcuts@gmail.com</a></span>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="mb-3" style="color: var(--accent);">Business Hours</h5>
+          <p class="mb-1">Mon &ndash; Thurs: 7:00 AM &ndash; 6:00 PM</p>
+          <p class="mb-1">Fri: 8:00 AM &ndash; 6:00 PM</p>
+          <p class="mb-1">Sat: 8:00 AM &ndash; 5:00 PM</p>
+          <p class="mb-1">Sun: 12:00 PM &ndash; 4:00 PM</p>
+          
+          <div class="footer-social-links d-flex align-items-center gap-2 mt-3 text-center justify-content-center">
+            <a href="https://www.facebook.com/melthemasterbarber" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook Profile" title="Facebook">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.65 13.75 5.65c1.08 0 2.21.19 2.21.19v2.43h-1.25c-1.23 0-1.61.77-1.61 1.56V12h2.74l-.44 3h-2.3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/melthemasterbarber/" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram Profile" title="Instagram">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="mailto:info@themelmasterbarber.com" class="footer-social-icon" aria-label="Send Email via Gmail" title="Gmail">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center pt-4 mt-5 border-top border-secondary opacity-50">
+        <p class="meduim mb-0">&copy; 2026 Mel The Master Barber. All rights reserved.</p>
+        <p class="meduim mb-0">Designed and Developed by <a href="https://tamoor-dev-neon.vercel.app" target="_blank" rel="noopener noreferrer" class="fw-bold">Temii-Tech</a></p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS Controller -->
+  <script src="js/main.js"></script>
+
+  <!-- UPGRADED LIGHTBOX INITIALIZER SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modalEl = document.getElementById('galleryLightboxModal');
+      if (!modalEl) return;
+
+      const modalImg = document.getElementById('lightboxModalImg');
+      const modalTitle = document.getElementById('lightboxCaptionTitle');
+      const modalSub = document.getElementById('lightboxCaptionSub');
+      const modalCounter = document.getElementById('lightboxCounter');
+      const prevBtn = document.getElementById('lightboxPrevBtn');
+      const nextBtn = document.getElementById('lightboxNextBtn');
+      const bsModal = new bootstrap.Modal(modalEl);
+
+      const items = Array.from(document.querySelectorAll('.lightbox-trigger'));
+      let currentIndex = 0;
+
+      function updateLightbox(index) {
+        if (index < 0) index = items.length - 1;
+        if (index >= items.length) index = 0;
+        currentIndex = index;
+
+        const target = items[currentIndex];
+        const src = target.dataset.src || target.querySelector('img')?.src || '';
+        const title = target.dataset.captionTitle || target.querySelector('.vip-title')?.textContent || '';
+        const sub = target.dataset.captionSub || '';
+
+        modalImg.style.opacity = '0';
+        modalImg.style.transform = 'scale(0.96)';
+
+        setTimeout(() => {
+          modalImg.src = src;
+          modalTitle.textContent = title;
+          modalSub.textContent = sub;
+          if (modalCounter) {
+            const formattedCurrent = String(currentIndex + 1).padStart(2, '0');
+            const formattedTotal = String(items.length).padStart(2, '0');
+            modalCounter.textContent = `${formattedCurrent} / ${formattedTotal}`;
+          }
+          modalImg.style.opacity = '1';
+          modalImg.style.transform = 'scale(1)';
+        }, 120);
+      }
+
+      items.forEach((el, index) => {
+        el.addEventListener('click', function() {
+          updateLightbox(index);
+          bsModal.show();
+        });
+      });
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          updateLightbox(currentIndex - 1);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          updateLightbox(currentIndex + 1);
+        });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (!modalEl.classList.contains('show')) return;
+        if (e.key === 'ArrowLeft') {
+          updateLightbox(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          updateLightbox(currentIndex + 1);
+        }
+      });
+    });
+  </script>
+  <!-- AI Chatbot Logic -->
+  <script src="js/chatbot.js"></script>
+</body>
+</html>
