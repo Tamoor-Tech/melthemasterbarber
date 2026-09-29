@@ -86,7 +86,7 @@ Pricing:
 
 Hours: Tue–Fri 9AM–7PM | Sat 8AM–5PM | Sun & Mon Closed
 
-Booking: Direct users to https://booksy.com — never claim to book appointments yourself.`;
+Booking: Direct users to https://mel-the-master-barber.square.site/ — never claim to book appointments yourself.`;
 
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
         const payload = {

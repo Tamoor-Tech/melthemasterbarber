@@ -63,7 +63,7 @@ Hours:
 - Sunday & Monday: Closed
 
 Booking:
-- If a user asks to book, guide them to the real Booksy booking destination (https://booksy.com).
+- If a user asks to book, guide them to the official online booking destination (https://mel-the-master-barber.square.site/).
 - NEVER claim you actually booked an appointment for them.
 - Provide a clear call to action to "Book an Appointment" if appropriate.`
         }
