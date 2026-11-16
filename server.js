@@ -66,11 +66,14 @@ If asked anything NOT covered by this knowledge base, respond politely:
 - Shape Up: $25.00 (Razor-sharp perimeter line up / edge-up; 20-30 min)
 
 2. BEARD SERVICES & BEARD TREATMENT:
-- Beard Trim / Beard Treatment: $25.00 (Meticulous beard shaping, hot towel facial beard treatment, warm lather, and crisp razor edge finish; 20-30 min)
+- Beard Treatment: $65 (Specialized beard treatment including deep conditioning, hot towel therapy, and precise beard shaping; 30 min)
+- Beard Trim: $25.00 (Meticulous trimming for a neat, well-kept beard; 20-30 min)
 
-3. PACKAGES & COMBOS (HAIRCUT & BEARD TREATMENT):
-- Full Haircut with Beard / Haircut & Beard Combo (Haircut with Beard Treatment): $50.00 (Full master haircut combined with detailed beard sculpting, facial hot towel treatment, and razor line finish; 30-45 min)
-- Haircut, Beard, & Shampoo: $65.00 (The complete triple-service experience: full haircut, beard trim/treatment, and an invigorating shampoo hair wash; 30-55 min)
+3. PACKAGES & COMBOS (HAIRCUT, BEARD, FACIAL & UPGRADES):
+- Haircut w/ Beard Treatment: $110 (Standard, 45 min) | With Hair Wash: $120
+- Haircut w/ Beard Treatment & Facial: $175 (Standard, 60 min) | With Hair Wash: $185
+- Full Haircut with Beard: $50.00 (Includes hair and beard; 30-45 min)
+- Haircut, Beard, & Shampoo: $65.00 (The full triple-service experience: full haircut, beard trim, and an invigorating shampoo hair wash; 30-55 min)
 - Haircut & Facial: $125.00 (Premium master haircut combined with a relaxing hot towel facial; 30-60 min)
 - Haircut, Facial, & Shampoo (Executive Ultimate / Signature Combo): $135.00 (The ultimate luxury grooming experience: haircut, rejuvenating facial, and scalp shampoo wash; 30-75 min)
 
