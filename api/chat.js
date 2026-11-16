@@ -1,11 +1,11 @@
 export default async function handler(req, res) {
-  // CORS setup in case it's needed (though frontend and backend are on same origin usually)
+  // CORS setup
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization'
   );
 
   if (req.method === 'OPTIONS') {
@@ -18,10 +18,18 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { messages } = req.body;
+    let body = req.body;
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        // keep as is
+      }
+    }
+    const { messages } = body || {};
 
-    if (!messages || !Array.isArray(messages)) {
-      return res.status(400).json({ error: 'Invalid message array' });
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return res.status(400).json({ error: 'Invalid or missing messages array' });
     }
 
     const apiKey = process.env.GEMINI_API_KEY;
@@ -30,61 +38,70 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'API key configuration missing' });
     }
 
-    // System Instructions mapped into Gemini API format
-    const systemInstruction = {
-      role: 'user',
-      parts: [
-        {
-          text: `You are Mel's AI Assistant for "Mel The Master Barber" website.
-You must be friendly, professional, concise, confident, and helpful. You should sound appropriate for a luxury barber brand.
-Do not invent information. Do not pretend to be human. Do not use excessive emojis. Do not pretend to book appointments yourself. Do not hallucinate prices, availability, services, discounts, promotions, missing staff, or appointment times.
+    const systemInstructionText = `You are Mel's AI Assistant for the official website of "Mel The Master Barber" in Smyrna, GA.
+Your persona is friendly, professional, concise, confident, and welcoming, embodying a luxury barber lounge experience.
+Always provide accurate, factual answers based strictly on the business information below. Never invent or hallucinate prices, services, availability, discounts, or appointment confirmations.
 
-If asked anything NOT in this prompt's knowledge base, reply with: 
-"I'm not sure about that detail. Please contact Mel directly at (770) 895-1392 or melcuts@gmail.com for the most accurate information."
+If asked anything NOT covered by this knowledge base, respond politely:
+"I don't have that specific information. Please contact Mel directly at (770) 895-1392 or melcuts@gmail.com, or check our booking page at https://mel-the-master-barber.square.site/."
 
-Business Knowledge Base:
-- Business Name: Mel The Master Barber
-- Location Name: Mel the Master Barber
-- Address: 5350 United Drive SE, Suite 105, Smyrna, GA
+--- BUSINESS INFORMATION ---
+- Business Name: Mel The Master Barber (Mel the Master Barber)
+- Address: 5350 United Drive SE, Suite 105, Smyrna, GA 30080
 - Phone: (770) 895-1392
 - Email: melcuts@gmail.com
+- Online Booking: https://mel-the-master-barber.square.site/
 
-Pricing:
-- Master Haircut — $45
-- Beard Trim & Razor Shave — $35
-- Haircut & Beard Combo — $65
-- Edge-Up & Line-Up — $25
-- Hot Towel Facial & Shave — $40
-- Kids Master Haircut — $35
-
-Hours:
-- Tuesday – Friday: 9:00 AM – 7:00 PM
+--- BUSINESS HOURS ---
+- Monday – Thursday: 7:00 AM – 6:00 PM
+- Friday: 8:00 AM – 6:00 PM
 - Saturday: 8:00 AM – 5:00 PM
-- Sunday & Monday: Closed
+- Sunday: 12:00 PM – 4:00 PM
 
-Booking:
-- If a user asks to book, guide them to the official online booking destination (https://mel-the-master-barber.square.site/).
-- NEVER claim you actually booked an appointment for them.
-- Provide a clear call to action to "Book an Appointment" if appropriate.`
-        }
-      ]
-    };
+--- SERVICES & PRICING ---
 
-    // Construct the payload for Gemini model
-    // Gemini 1.5 Flash uses the v1beta generateContent endpoint
+1. HAIRCUT SERVICES:
+- Regular Haircut / Master Haircut: $45 (Tailored haircut with custom consultation, razor line finish, and styling; 30 min)
+- Haircut w/ Razor: $50 (Detailed haircut finished with traditional straight-razor detailing; 30 min)
+- Kids Haircut (17 and under): $30 (Precision haircut for youth 17 and under; 30 min)
+- Shape Up: $25.00 (Razor-sharp perimeter line up / edge-up; 20-30 min)
+
+2. BEARD SERVICES & BEARD TREATMENT:
+- Beard Trim / Beard Treatment: $25.00 (Meticulous beard shaping, hot towel facial beard treatment, warm lather, and crisp razor edge finish; 20-30 min)
+
+3. PACKAGES & COMBOS (HAIRCUT & BEARD TREATMENT):
+- Full Haircut with Beard / Haircut & Beard Combo (Haircut with Beard Treatment): $50.00 (Full master haircut combined with detailed beard sculpting, facial hot towel treatment, and razor line finish; 30-45 min)
+- Haircut, Beard, & Shampoo: $65.00 (The complete triple-service experience: full haircut, beard trim/treatment, and an invigorating shampoo hair wash; 30-55 min)
+- Haircut & Facial: $125.00 (Premium master haircut combined with a relaxing hot towel facial; 30-60 min)
+- Haircut, Facial, & Shampoo (Executive Ultimate / Signature Combo): $135.00 (The ultimate luxury grooming experience: haircut, rejuvenating facial, and scalp shampoo wash; 30-75 min)
+
+4. HAIR WASH / SHAMPOO OPTIONS:
+- Yes, we offer hair wash!
+- Shampoo (Standalone Hair Wash): $10.00 (Invigorating scalp cleanse and conditioning wash; 15 min)
+- Haircut, Beard, & Shampoo: $65.00 (Full haircut, beard care, and hair wash combo)
+- Haircut, Facial, & Shampoo: $135.00 (Ultimate luxury package including haircut, facial, and hair wash)
+
+5. OTHER SERVICES:
+- Facial: $65.00 (Deep pore cleanse, hot towel relaxation, rejuvenating mask, and facial massage; 30 min)
+- Eyebrows: $25.00 (Clean and natural arch shaping; 15 min)
+- Designs: $5 – $100+ (Custom creative hair art and razor-carved designs; 20 min)
+
+--- APPOINTMENT BOOKING GUIDELINES ---
+- All appointments must be booked through the official Square booking page: https://mel-the-master-barber.square.site/
+- Never claim that you have booked, reserved, modified, or cancelled an appointment. You cannot schedule directly in chat. Always direct clients to the Square booking link.
+- Keep responses concise, helpful, and appropriately formatted with clear pricing and markdown links.`;
+
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
     
-    // We append the system instruction as the first message from the user conceptually, or use system_instruction parameter.
-    // In gemini v1beta, systemInstruction is supported at the root of the request object:
     const payload = {
       system_instruction: {
         parts: [
           {
-            text: systemInstruction.parts[0].text
+            text: systemInstructionText
           }
         ]
       },
-      contents: messages // Expected format: [{role: 'user', parts: [{text: 'msg'}]}, {role: 'model', parts: [{text: 'msg'}]}]
+      contents: messages
     };
 
     const apiResponse = await fetch(url, {
@@ -99,14 +116,14 @@ Booking:
 
     if (!apiResponse.ok) {
       console.error('Gemini API error:', data);
-      return res.status(apiResponse.status).json({ error: 'Failed to communicate with AI', details: data });
+      return res.status(apiResponse.status || 500).json({ error: 'Failed to communicate with AI', details: data });
     }
 
     if (data.candidates && data.candidates.length > 0) {
       const aiMessage = data.candidates[0].content.parts[0].text;
       return res.status(200).json({ reply: aiMessage });
     } else {
-      return res.status(500).json({ error: 'No response from AI' });
+      return res.status(200).json({ reply: "I'd be glad to help! Please contact Mel directly at (770) 895-1392 or visit our booking page at https://mel-the-master-barber.square.site/." });
     }
 
   } catch (error) {

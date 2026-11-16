@@ -104,9 +104,10 @@
   .mel-ai-panel {
     bottom: 16px;
     right: 16px;
-    width: calc(100% - 32px);
-    height: calc(100vh - 4rem); /* Responsive tall height avoiding browser mobile bars */
-    max-height: 800px;
+    left: 16px;
+    width: auto;
+    height: calc(100vh - 4.5rem);
+    max-height: 700px;
   }
 }
 
@@ -229,6 +230,34 @@
   font-size: 0.95rem;
   line-height: 1.5;
   border-radius: 12px;
+  word-break: break-word;
+}
+
+.mel-ai-bubble p {
+  margin: 0 0 0.5rem 0;
+}
+
+.mel-ai-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.mel-ai-bubble ul,
+.mel-ai-bubble ol {
+  margin: 0.4rem 0 0.6rem 1.25rem;
+  padding: 0;
+}
+
+.mel-ai-bubble li {
+  margin-bottom: 0.35rem;
+}
+
+.mel-ai-bubble li:last-child {
+  margin-bottom: 0;
+}
+
+.mel-ai-bubble strong {
+  font-weight: 700;
+  color: inherit;
 }
 
 .mel-ai-msg-row.ai .mel-ai-bubble {

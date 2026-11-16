@@ -37,60 +37,111 @@ const MIME_TYPES = {
 
 const PORT = 3000;
 
+const SYSTEM_INSTRUCTION = `You are Mel's AI Assistant for the official website of "Mel The Master Barber" in Smyrna, GA.
+Your persona is friendly, professional, concise, confident, and welcoming, embodying a luxury barber lounge experience.
+Always provide accurate, factual answers based strictly on the business information below. Never invent or hallucinate prices, services, availability, discounts, or appointment confirmations.
+
+If asked anything NOT covered by this knowledge base, respond politely:
+"I don't have that specific information. Please contact Mel directly at (770) 895-1392 or melcuts@gmail.com, or check our booking page at https://mel-the-master-barber.square.site/."
+
+--- BUSINESS INFORMATION ---
+- Business Name: Mel The Master Barber (Mel the Master Barber)
+- Address: 5350 United Drive SE, Suite 105, Smyrna, GA 30080
+- Phone: (770) 895-1392
+- Email: melcuts@gmail.com
+- Online Booking: https://mel-the-master-barber.square.site/
+
+--- BUSINESS HOURS ---
+- Monday – Thursday: 7:00 AM – 6:00 PM
+- Friday: 8:00 AM – 6:00 PM
+- Saturday: 8:00 AM – 5:00 PM
+- Sunday: 12:00 PM – 4:00 PM
+
+--- SERVICES & PRICING ---
+
+1. HAIRCUT SERVICES:
+- Regular Haircut / Master Haircut: $45 (Tailored haircut with custom consultation, razor line finish, and styling; 30 min)
+- Haircut w/ Razor: $50 (Detailed haircut finished with traditional straight-razor detailing; 30 min)
+- Kids Haircut (17 and under): $30 (Precision haircut for youth 17 and under; 30 min)
+- Shape Up: $25.00 (Razor-sharp perimeter line up / edge-up; 20-30 min)
+
+2. BEARD SERVICES & BEARD TREATMENT:
+- Beard Trim / Beard Treatment: $25.00 (Meticulous beard shaping, hot towel facial beard treatment, warm lather, and crisp razor edge finish; 20-30 min)
+
+3. PACKAGES & COMBOS (HAIRCUT & BEARD TREATMENT):
+- Full Haircut with Beard / Haircut & Beard Combo (Haircut with Beard Treatment): $50.00 (Full master haircut combined with detailed beard sculpting, facial hot towel treatment, and razor line finish; 30-45 min)
+- Haircut, Beard, & Shampoo: $65.00 (The complete triple-service experience: full haircut, beard trim/treatment, and an invigorating shampoo hair wash; 30-55 min)
+- Haircut & Facial: $125.00 (Premium master haircut combined with a relaxing hot towel facial; 30-60 min)
+- Haircut, Facial, & Shampoo (Executive Ultimate / Signature Combo): $135.00 (The ultimate luxury grooming experience: haircut, rejuvenating facial, and scalp shampoo wash; 30-75 min)
+
+4. HAIR WASH / SHAMPOO OPTIONS:
+- Yes, we offer hair wash!
+- Shampoo (Standalone Hair Wash): $10.00 (Invigorating scalp cleanse and conditioning wash; 15 min)
+- Haircut, Beard, & Shampoo: $65.00 (Full haircut, beard care, and hair wash combo)
+- Haircut, Facial, & Shampoo: $135.00 (Ultimate luxury package including haircut, facial, and hair wash)
+
+5. OTHER SERVICES:
+- Facial: $65.00 (Deep pore cleanse, hot towel relaxation, rejuvenating mask, and facial massage; 30 min)
+- Eyebrows: $25.00 (Clean and natural arch shaping; 15 min)
+- Designs: $5 – $100+ (Custom creative hair art and razor-carved designs; 20 min)
+
+--- APPOINTMENT BOOKING GUIDELINES ---
+- All appointments must be booked through the official Square booking page: https://mel-the-master-barber.square.site/
+- Never claim that you have booked, reserved, modified, or cancelled an appointment. You cannot schedule directly in chat. Always direct clients to the Square booking link.
+- Keep responses concise, helpful, and appropriately formatted with clear pricing and markdown links.`;
+
 const server = http.createServer(async (req, res) => {
   const urlObj = new URL(req.url, `http://localhost:${PORT}`);
   const pathname = urlObj.pathname;
 
   // ─── API Route: /api/chat ───────────────────────────────────────────────
   if (pathname === '/api/chat') {
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Content-Type': 'application/json'
+    };
+
     if (req.method === 'OPTIONS') {
-      res.writeHead(200, { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' });
+      res.writeHead(200, corsHeaders);
       res.end();
       return;
     }
+
     if (req.method !== 'POST') {
-      res.writeHead(405, { 'Content-Type': 'application/json' });
+      res.writeHead(405, corsHeaders);
       res.end(JSON.stringify({ error: 'Method Not Allowed' }));
       return;
     }
 
     let body = '';
-    req.on('data', chunk => body += chunk.toString());
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+
     req.on('end', async () => {
       try {
-        const { messages } = JSON.parse(body);
+        const parsed = JSON.parse(body || '{}');
+        const messages = parsed.messages;
         const apiKey = process.env.GEMINI_API_KEY;
 
-        if (!apiKey) {
-          res.writeHead(500, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ error: 'GEMINI_API_KEY not found in .env' }));
+        if (!messages || !Array.isArray(messages) || messages.length === 0) {
+          res.writeHead(400, corsHeaders);
+          res.end(JSON.stringify({ error: 'Invalid or missing messages array' }));
           return;
         }
 
-        const systemText = `You are Mel's AI Assistant for "Mel The Master Barber" website.
-Be friendly, professional, concise, confident, and helpful. Sound appropriate for a luxury barber brand.
-Do not invent information. Do not pretend to be human. Do not use excessive emojis.
-If asked anything NOT in this knowledge base, say: "I'm not sure about that detail. Please contact Mel directly at (770) 895-1392 or melcuts@gmail.com."
-
-Business: Mel The Master Barber | Mel the Master Barber
-Address: 5350 United Drive SE, Suite 105, Smyrna, GA
-Phone: (770) 895-1392 | Email: melcuts@gmail.com
-
-Pricing:
-- Master Haircut — $45
-- Beard Trim & Razor Shave — $35
-- Haircut & Beard Combo — $65
-- Edge-Up & Line-Up — $25
-- Hot Towel Facial & Shave — $40
-- Kids Master Haircut — $35
-
-Hours: Tue–Fri 9AM–7PM | Sat 8AM–5PM | Sun & Mon Closed
-
-Booking: Direct users to https://mel-the-master-barber.square.site/ — never claim to book appointments yourself.`;
+        if (!apiKey) {
+          console.error('Missing GEMINI_API_KEY');
+          res.writeHead(500, corsHeaders);
+          res.end(JSON.stringify({ error: 'GEMINI_API_KEY not configured in .env' }));
+          return;
+        }
 
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
         const payload = {
-          system_instruction: { parts: [{ text: systemText }] },
+          system_instruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
           contents: messages
         };
 
@@ -104,18 +155,24 @@ Booking: Direct users to https://mel-the-master-barber.square.site/ — never cl
 
         if (!apiRes.ok) {
           console.error('Gemini error:', JSON.stringify(data));
-          res.writeHead(apiRes.status, { 'Content-Type': 'application/json' });
+          res.writeHead(apiRes.status || 500, corsHeaders);
           res.end(JSON.stringify({ error: 'Gemini API error', details: data }));
           return;
         }
 
         const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-        res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        if (!reply) {
+          res.writeHead(200, corsHeaders);
+          res.end(JSON.stringify({ reply: "I'd be glad to help! Please contact Mel directly at (770) 895-1392 or visit our booking page at https://mel-the-master-barber.square.site/." }));
+          return;
+        }
+
+        res.writeHead(200, corsHeaders);
         res.end(JSON.stringify({ reply }));
 
       } catch (err) {
         console.error('Server error:', err);
-        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.writeHead(500, corsHeaders);
         res.end(JSON.stringify({ error: 'Internal Server Error' }));
       }
     });
